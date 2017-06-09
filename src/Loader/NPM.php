@@ -175,6 +175,8 @@ class NPM
 
         for ($i = 0; $i < 5; $i++)
         {
+            $success = true;
+
             try
             {
                 if ($i)
@@ -242,17 +244,21 @@ class NPM
             }
             catch (Page $page)
             {
+                $success = false;
                 var_dump($page->getMessage());
                 break;
             }
             catch (\Throwable $throwable)
             {
-                if (Dir::isDir($pathTo))
-                {
-                    Dir::remove($pathTo);
-                }
-
+                $success = false;
                 var_dump($throwable->getMessage());
+            }
+            finally
+            {
+                if (!$success && Dir::isDir($pathTo . $version))
+                {
+                    Dir::remove($pathTo . $version, true);
+                }
             }
         }
     }
