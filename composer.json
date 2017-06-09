@@ -1,0 +1,21 @@
+{
+  "name": "bavix/cdn",
+  "description": "npm-cloud",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Babichev Maxim",
+      "email": "info@babichev.net"
+    }
+  ],
+  "require": {
+    "bavix/helpers": "^1.0",
+    "alchemy/zippy": "^0.4.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bavix\\": "src/"
+    }
+  }
+}
