@@ -268,7 +268,8 @@ class NPM
         $allow   = null;
         $verList = [];
 
-        if (\strpos($name, '@') !== false)
+        // eq === 0 & eq === false
+        if (\strpos($name, '@'))
         {
             list($name, $allow) = \explode('@', $name);
         }
