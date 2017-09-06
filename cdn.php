@@ -1,12 +1,20 @@
 <?php
 
-$root = dirname(__DIR__) . '/';
+$root = __DIR__ . '/';
 
 include_once $root . 'vendor/autoload.php';
 
-$storage = $root . 'storage/';
+$storage = $root . 'web/';
 
 $npm = new \Bavix\Loader\NPM($storage);
+
+if (($argv[1] ?? null) === '--upd')
+{
+    $packages = scandir($storage, null);
+
+    $argv = array_merge([__FILE__], array_slice($packages, 2));
+    $argc = count($argv);
+}
 
 for ($i = 1; $i < $argc; $i++) {
 
