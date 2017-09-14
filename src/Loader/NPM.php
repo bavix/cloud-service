@@ -188,9 +188,9 @@ class NPM
                 {
                     $this->downloadVersion($name, [$version, $version], $data);
 
-                    if (File::isFile($pathTo . $tag))
+                    if (Dir::isDir($pathTo . $tag))
                     {
-                        File::remove($pathTo . $tag);
+                        Dir::remove($pathTo . $tag);
                     }
 
                     chdir($pathTo);
