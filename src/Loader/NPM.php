@@ -190,12 +190,14 @@ class NPM
 
                     chdir($pathTo);
 
-                    var_dump(File::isLink($tag));die;
                     if (File::isLink($tag))
                     {
                         File::remove($tag);
                     }
 
+                    var_dump(File::isFile($tag));
+                    var_dump(File::isLink($tag));
+die;
                     File::symlink($version, $tag);
                     $this->log('symlink package', $name, '[' . $tag . '] from', $version);
                     break;
