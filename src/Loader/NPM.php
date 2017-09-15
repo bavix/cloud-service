@@ -193,7 +193,7 @@ class NPM
                         File::remove($pathTo . $tag);
                     }
 
-                    symlink($pathTo . $version, $pathTo .$tag);
+                    File::symlink($pathTo . $version, $pathTo .$tag);
                     $this->log('symlink package', $name, '[' . $tag . '] from', $version);
                     break;
                 }
