@@ -13,6 +13,7 @@ class Tmp
     public function __construct($root, $postfix = '.bx')
     {
         $this->file = $root . Str::random() . $postfix;
+        register_shutdown_function([$this, '__destruct']);
     }
 
     public function __destruct()

@@ -181,21 +181,19 @@ class NPM
             {
                 if ($i)
                 {
-                    fwrite(STDOUT, 'try ... ');
+                    $this->log('try ... ');
                 }
 
                 if ($tag !== $version)
                 {
                     $this->downloadVersion($name, [$version, $version], $data);
 
-                    if (Dir::isDir($pathTo . $tag))
+                    if (File::isLink($pathTo . $tag))
                     {
-                        Dir::remove($pathTo . $tag);
+                        File::remove($pathTo . $tag);
                     }
 
-                    chdir($pathTo);
-
-                    system('ln -s ' . $version . ' ' . $tag);
+                    symlink($pathTo . $version, $pathTo .$tag);
                     $this->log('symlink package', $name, '[' . $tag . '] from', $version);
                     break;
                 }
