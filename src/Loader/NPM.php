@@ -188,12 +188,14 @@ class NPM
                 {
                     $this->downloadVersion($name, [$version, $version], $data);
 
-                    if (File::isLink($pathTo . $tag))
+                    chdir($pathTo);
+
+                    if (File::isFile($tag))
                     {
-                        File::remove($pathTo . $tag);
+                        File::remove($tag);
                     }
 
-                    File::symlink($pathTo . $version, $pathTo .$tag);
+                    File::symlink($version, $tag);
                     $this->log('symlink package', $name, '[' . $tag . '] from', $version);
                     break;
                 }
@@ -237,7 +239,6 @@ class NPM
                     Dir::remove($tmp . '-data');
                 }
 
-                unset($tmp);
                 break;
             }
             catch (Page $page)
