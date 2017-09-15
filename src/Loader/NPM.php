@@ -4,6 +4,7 @@ namespace Bavix\Loader;
 
 use Alchemy\Zippy\Zippy;
 use Bavix\Exceptions\Blank;
+use Bavix\Exceptions\Invalid;
 use Bavix\Exceptions\NotFound\Page;
 use Bavix\Exceptions\Runtime;
 use Bavix\Helpers\Arr;
@@ -195,9 +196,12 @@ class NPM
                         File::remove($tag);
                     }
 
-                    var_dump(File::isFile($tag));
-                    var_dump(File::isLink($tag));
-die;
+                    if (File::isLink($tag))
+                    {
+                        // if not remove
+                        throw new Invalid('The tag `' . $tag . '` hasn\'t been removed');
+                    }
+
                     File::symlink($version, $tag);
                     $this->log('symlink package', $name, '[' . $tag . '] from', $version);
                     break;
