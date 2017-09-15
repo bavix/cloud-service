@@ -190,7 +190,8 @@ class NPM
 
                     chdir($pathTo);
 
-                    if (File::isFile($tag))
+                    var_dump(File::isLink($tag));die;
+                    if (File::isLink($tag))
                     {
                         File::remove($tag);
                     }
