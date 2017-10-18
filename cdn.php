@@ -26,3 +26,18 @@ for ($i = 1; $i < $argc; $i++) {
     }
 
 }
+
+// cleanup
+$root = __DIR__ . '/web';
+
+$iter = new RecursiveIteratorIterator(
+    new RecursiveDirectoryIterator($root)
+);
+
+$files = new RegexIterator($iter, '~\.zip$~');
+
+foreach ($files as $file) {
+    echo $file . PHP_EOL;
+    @unlink($file);
+}
+// end cleeanup
