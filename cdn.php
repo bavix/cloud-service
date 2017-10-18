@@ -26,3 +26,5 @@ for ($i = 1; $i < $argc; $i++) {
     }
 
 }
+
+shell_exec('find web/ -type f -name "*.zip" -print0 | while IFS= read -r -d $\'\0\' line; do rm "$line"; done');
