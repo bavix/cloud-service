@@ -34,7 +34,7 @@ $iter = new RecursiveIteratorIterator(
     new RecursiveDirectoryIterator($root)
 );
 
-$files = new RegexIterator($iter, '~\.(zip|jar)$~');
+$files = new RegexIterator($iter, '~\.(zip|jar|php)$~');
 
 foreach ($files as $file) {
     echo $file . PHP_EOL;
