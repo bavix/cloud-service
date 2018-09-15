@@ -4,7 +4,7 @@ $root = __DIR__ . '/';
 
 include_once $root . 'vendor/autoload.php';
 
-$storage = $root . 'web/';
+$storage = $root . 'public/';
 
 $npm = new \Bavix\Loader\NPM($storage);
 
