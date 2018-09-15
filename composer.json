@@ -11,7 +11,7 @@
   ],
   "require": {
     "bavix/helpers": "^1.0",
-    "alchemy/zippy": "^0.4.8"
+    "alchemy/zippy": "0.4.8"
   },
   "autoload": {
     "psr-4": {
