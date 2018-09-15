@@ -28,10 +28,8 @@ for ($i = 1; $i < $argc; $i++) {
 }
 
 // cleanup
-$root = __DIR__ . '/web';
-
 $iter = new RecursiveIteratorIterator(
-    new RecursiveDirectoryIterator($root)
+    new RecursiveDirectoryIterator($storage)
 );
 
 $files = new RegexIterator($iter, '~\.(zip|jar|php)$~');
